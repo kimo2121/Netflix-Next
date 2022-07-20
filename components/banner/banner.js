@@ -9,7 +9,6 @@ const Banner = (props) => {
   const handleOnPlay = () => {
     router.push(`video/${videoId}`);
   };
-
   return (
     <div className={styles.container}>
       <div className={styles.leftWrapper}>

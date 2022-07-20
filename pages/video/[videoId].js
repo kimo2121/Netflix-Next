@@ -16,14 +16,13 @@ Modal.setAppElement("#__next");
 
 export async function getStaticProps(context) {
   const videoId = context.params.videoId;
-  // console.log(context.params);
   const videoArray = await getYoutubeVideoById(videoId);
-  // console.log({ videoArray });
+
   return {
     props: {
       video: videoArray.length > 0 ? videoArray[0] : {},
     },
-    revalidate: 10,
+    revalidate: 10, // In seconds
   };
 }
 

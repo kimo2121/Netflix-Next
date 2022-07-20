@@ -10,10 +10,12 @@ export default async function login(req, res) {
       const didToken = auth ? auth.substr(7) : "";
 
       const metadata = await magicAdmin.users.getMetadataByToken(didToken);
-
       const token = jwt.sign(
         {
-          ...metadata,
+          // ...metadata,
+          issuer: metadata.issuer,
+          email: metadata.email,
+          publicAddress: metadata.publicAddress,
           iat: Math.floor(Date.now() / 1000),
           exp: Math.floor(Date.now() / 1000 + 7 * 24 * 60 * 60),
           "https://hasura.io/jwt/claims": {
@@ -22,6 +24,7 @@ export default async function login(req, res) {
             "x-hasura-user-id": `${metadata.issuer}`,
           },
         },
+
         process.env.JWT_SECRET
       );
 
