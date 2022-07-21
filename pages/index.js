@@ -46,7 +46,7 @@ export default function Home({
     <div className={styles.container}>
       <Head>
         <title>Netflix</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/netflix.png" />
       </Head>
 
       <div className={styles.main}>
